@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luz y Sonido - Terraza Celestial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4AF37;
+            --secondary: #1a1a2e;
+            --accent: #e94560;
+            --light: #f8f9fa;
+            --dark: #0f0f1e;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            padding-top: 80px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .navbar {
+            background: rgba(15, 15, 30, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-link {
+            color: var(--light) !important;
+            font-weight: 500;
+            margin: 0 1rem;
+        }
+        
+        .page-header {
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(233, 69, 96, 0.1));
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tech-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+        }
+        
+        .tech-icon {
+            font-size: 5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li i {
+            color: var(--primary);
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .video-section {
+            padding: 6rem 0;
+            background: var(--secondary);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .equipment-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .equipment-item:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .equipment-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer {
+            background: var(--dark);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--primary);
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-crown"></i> Terraza Celestial
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="paquetes.html">Paquetes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mobiliario.html">Mobiliario</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="luz-sonido.html">Luz y Sonido</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ambientacion.html">Ambientación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Luz y Sonido Profesional</h1>
+            <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.3rem;">Tecnología de última generación para tu evento</p>
+        </div>
+    </section>
+
+    <!-- Main Tech Cards -->
+    <section style="padding: 6rem 0; background: var(--dark);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="tech-card">
+                        <i class="fas fa-lightbulb tech-icon"></i>
+                        <h2 style="color: var(--primary); font-size: 2.5rem;">Iluminación LED Inteligente</h2>
+                        <p style="font-size: 1.1rem; margin: 2rem 0;">Sistema de iluminación arquitectónica programable con control DMX512 y efectos dinámicos.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Iluminación RGB de 16 millones de colores</li>
+                            <li><i class="fas fa-check-circle"></i> Moving heads profesionales</li>
+                            <li><i class="fas fa-check-circle"></i> Wash lights y spot lights</li>
+                            <li><i class="fas fa-check-circle"></i> Efectos de neblina y humo</li>
+                            <li><i class="fas fa-check-circle"></i> Iluminación arquitectónica exterior</li>
+                            <li><i class="fas fa-check-circle"></i> Control inalámbrico por tablet</li>
+                            <li><i class="fas fa-check-circle"></i> Programación personalizada</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="tech-card">
+                        <i class="fas fa-volume-up tech-icon"></i>
+                        <h2 style="color: var(--primary); font-size: 2.5rem;">Sistema de Audio Premium</h2>
+                        <p style="font-size: 1.1rem; margin: 2rem 0;">Equipamiento de audio profesional con cobertura total y calidad de concierto.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Sistema Line Array JBL/Bose</li>
+                            <li><i class="fas fa-check-circle"></i> Subwoofers de 18" doble bobina</li>
+                            <li><i class="fas fa-check-circle"></i> Mezcladora digital 32 canales</li>
+                            <li><i class="fas fa-check-circle"></i> Micrófonos inalámbricos Shure</li>
+                            <li><i class="fas fa-check-circle"></i> Monitores de escenario</li>
+                            <li><i class="fas fa-check-circle"></i> Procesador de audio digital</li>
+                            <li><i class="fas fa-check-circle"></i> Ingeniero de audio incluido</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Nuestro Sistema en Acción</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 style="font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;">Experiencia Audiovisual Inmersiva</h3>
+                    <p style="font-size: 1.2rem; line-height: 1.8;">Nuestro sistema de luz y sonido transforma cualquier espacio en un ambiente espectacular. Con tecnología de punta y operadores certificados, garantizamos una experiencia sensorial única para tus invitados.</p>
+                    <ul class="feature-list" style="margin-top: 2rem;">
+                        <li><i class="fas fa-star"></i> Certificación THX y Dolby</li>
+                        <li><i class="fas fa-star"></i> Cobertura acústica uniforme</li>
+                        <li><i class="fas fa-star"></i> Efectos especiales disponibles</li>
+                        <li><i class="fas fa-star"></i> Sincronización luz-música</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Grid -->
+    <section style="padding: 6rem 0; background: var(--dark);">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Equipamiento Adicional</h2>
+            <div class="equipment-grid">
+                <div class="equipment-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Pantallas LED">
+                    <h4 style="color: var(--primary); margin: 1rem 0;">Pantallas LED</h4>
+                    <p>Pantallas de alta resolución desde 2x2m hasta 6x4m. Ideal para presentaciones y videos.</p>
+                    <p style="color: var(--primary); font-weight: 700; font-size: 1.3rem;">Desde $3,500</p>
+                </div>
+                <div class="equipment-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Cabina DJ">
+                    <h4 style="color: var(--primary); margin: 1rem 0;">Cabina DJ</h4>
+                    <p>Equipo completo con tornamesas Pioneer, controladores y efectos profesionales.</p>
+                    <p style="color: var(--primary); font-weight: 700; font-size: 1.3rem;">$4,500</p>
+                </div>
+                <div class="equipment-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Estructuras">
+                    <h4 style="color: var(--primary); margin: 1rem 0;">Estructuras Truss</h4>
+                    <p>Estructuras modulares para montaje de iluminación y efectos especiales.</p>
+                    <p style="color: var(--primary); font-weight: 700; font-size: 1.3rem;">$2,800</p>
+                </div>
+                <div class="equipment-item" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Efectos Láser">
+                    <h4 style="color: var(--primary); margin: 1rem 0;">Efectos Láser</h4>
+                    <p>Láseres RGB de alta potencia con efectos programables y sincronización musical.</p>
+                    <p style="color: var(--primary); font-weight: 700; font-size: 1.3rem;">$5,200</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 6rem 0; background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(233, 69, 96, 0.1)); text-align: center;">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="section-title">¿Listo Para Una Experiencia Audiovisual Única?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 3rem;">Contáctanos para una demostración en vivo</p>
+            <a href="contacto.html" class="btn" style="padding: 1rem 3rem; font-size: 1.1rem; font-weight: 600; border: none; border-radius: 50px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white;">
+                Solicitar Cotización
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 style="color: var(--primary);">Terraza Celestial</h4>
+                    <p>El lugar perfecto para tus eventos más especiales en Guadalajara, Jalisco.</p>
+                    <div class="social-links mt-3">
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 style="color: var(--primary);">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="paquetes.html" style="color: var(--light); text-decoration: none;">Paquetes</a></li>
+                        <li><a href="mobiliario.html" style="color: var(--light); text-decoration: none;">Mobiliario</a></li>
+                        <li><a href="luz-sonido.html" style="color: var(--light); text-decoration: none;">Luz y Sonido</a></li>
+                        <li><a href="galeria.html" style="color: var(--light); text-decoration: none;">Galería</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 style="color: var(--primary);">Contacto</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Chapultepec 480, Col. Americana, Guadalajara, Jal.</p>
+                    <p><i class="fas fa-phone"></i> (33) 3615-8900</p>
+                    <p><i class="fas fa-envelope"></i> info@terrazacelestial.com</p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(212, 175, 55, 0.3);">
+            <div class="text-center">
+                <p>&copy; 2025 Terraza Celestial. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
